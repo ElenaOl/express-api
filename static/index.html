@@ -1,0 +1,28 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>This is my Giphy Search</title>
+  </head>
+  <body>
+    <input type="text" name="q" placeholder="Search for GIFs...">
+    <button type="button">Search!</button>
+    <div id="images">
+      
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.js"
+      integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+      crossorigin="anonymous"></script>
+
+    <script>
+    $('button').on('click', function(e) {
+      e.preventDefault();
+      var query = $('input').val();
+      $.get('/search/' + query).done(function(htmlData) {
+         $("#images").html(htmlData);
+      });
+    });
+    </script>
+  </body>
+</html>
